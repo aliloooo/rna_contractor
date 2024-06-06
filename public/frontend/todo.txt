@@ -1,0 +1,12 @@
+# paket project ✔
+# blog ✔
+# contact ✔
+# detail blog ✔
+# detail paket project  ✔
+# logo ✔
+# edit paket project image
+# edit logo patners ✔
+# value image ✔
+# home image ✔
+# blog & image ✔
+# footer copy ✔
