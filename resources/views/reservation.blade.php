@@ -51,7 +51,7 @@
                         <button type="submit" class="button button-reservation">Send</button>
                     </form>
                     @else
-                    <p>Anda harus <a href="{{ route('login') }}">login</a> atau <a href="{{ route('register')}}">register</a> terlebih dahulu untuk melakukan booking.</p>
+                    <p>Anda harus <a href="{{ route('login') }}">login</a> atau <a href="{{ route('register')}}">register</a> terlebih dahulu untuk melakukan reservasi.</p>
                   @endauth
                 </div>
             </section>
