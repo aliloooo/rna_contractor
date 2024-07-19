@@ -63,6 +63,8 @@
                 </div>
             </div>
 
+            <input type="hidden" name="redirect" value="{{ request()->get('redirect') }}">
+
             <div class="row">
                 <div class="col-12">
                     <button type="submit"

@@ -36,22 +36,24 @@
         <div class="controls gallery-thumbs">
             <div class="controls__container swiper-wrapper">
                 @foreach ($project_package->galleries as $gallery)
-                @php
-                    $media = $gallery->media_path;
-                    $extension = pathinfo($media, PATHINFO_EXTENSION);
-                @endphp
-            
-                @if (in_array($extension, ['jpg', 'jpeg', 'png', 'gif']))
-                    <img src="{{ Storage::url($media) }}" alt="{{ $gallery->name }}" class="controls__img swiper-slide" />
-                @elseif (in_array($extension, ['mp4', 'mov', 'avi']))
-                    <video class="controls__img swiper-slide">
-                        <source src="{{ Storage::url($media) }}" type="video/{{ $extension }}">
-                        Your browser does not support the video tag.
-                    </video>
-                @endif
-            @endforeach            
+                    @php
+                        $media = $gallery->media_path;
+                        $extension = pathinfo($media, PATHINFO_EXTENSION);
+                    @endphp
+                
+                    @if (in_array($extension, ['jpg', 'jpeg', 'png', 'gif']))
+                        <img src="{{ Storage::url($media) }}" alt="{{ $gallery->name }}" class="controls__img swiper-slide" />
+                    @elseif (in_array($extension, ['mp4', 'mov', 'avi']))
+                        <video class="controls__img swiper-slide" autoplay muted loop>
+                            <source src="{{ Storage::url($media) }}" type="video/{{ $extension }}">
+                            Your browser does not support the video tag.
+                        </video>
+                    @endif
+                @endforeach            
             </div>
         </div>
+        
+        
     </section>
 
     <section class="blog section" id="blog">
@@ -175,8 +177,8 @@
                                 <button type="submit" class="button button-reservation">Send</button>
                             </form>
                         @else
-                            <p>Anda harus <a href="{{ route('login') }}">login</a> atau <a
-                                    href="{{ route('register') }}">register</a> terlebih dahulu untuk melakukan booking.</p>
+                        <p class="text-white">Anda harus <a href="{{ route('login', ['redirect' => url()->current()]) }}" class="text-decoration-none">login</a> atau <a
+                            href="{{ route('register', ['redirect' => url()->current()]) }}" class="text-decoration-none">register</a> terlebih dahulu untuk melakukan reservasi.</p>
                         @endauth
                     </div>
                 </div>

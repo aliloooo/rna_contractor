@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -37,4 +38,24 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function authenticated(Request $request, $user)
+{
+    if ($request->has('redirect')) {
+        return redirect($request->input('redirect'));
+    }
+
+    return redirect()->intended($this->redirectPath());
+}
+
+// RegisterController.php
+protected function registered(Request $request, $user)
+{
+    if ($request->has('redirect')) {
+        return redirect($request->input('redirect'));
+    }
+
+    return redirect($this->redirectPath());
+}
+
 }

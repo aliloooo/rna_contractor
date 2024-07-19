@@ -85,11 +85,6 @@
                                         <i class="bx bx-dashboard mr-2"></i>
                                         Dashboard
                                     </a>
-                                @else
-                                    <a class="dropdown-item d-flex align-items-center fs-5" href="{{ url('/') }}">
-                                        <i class="bx bx-home mr-2"></i>
-                                        Homepage
-                                    </a>
                                 @endif
                                 <div class="dropdown-divider"></div>
                                 <form method="POST" action="{{ route('logout') }}">

@@ -78,8 +78,8 @@
                   </form>
                   
                         @else
-                            <p class="text-white">Anda harus <a href="{{ route('login') }}" class="text-decoration-none">login</a> atau <a
-                                    href="{{ route('register') }}" class="text-decoration-none">register</a> terlebih dahulu untuk melakukan reservasi.</p>
+                        <p class="text-white">Anda harus <a href="{{ route('login', ['redirect' => url()->current()]) }}" class="text-decoration-none">login</a> atau <a
+                            href="{{ route('register', ['redirect' => url()->current()]) }}" class="text-decoration-none">register</a> terlebih dahulu untuk melakukan reservasi.</p>                        
                         @endauth
                     </div>
                 </section>
