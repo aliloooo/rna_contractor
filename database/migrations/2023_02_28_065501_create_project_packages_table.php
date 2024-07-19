@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('location');
             $table->integer('price');
             $table->text('description');
+            $table->string('termin');
+            $table->integer('nominal');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }

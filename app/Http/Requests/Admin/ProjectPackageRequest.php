@@ -27,7 +27,10 @@ class ProjectPackageRequest extends FormRequest
                     'type' => 'required',
                     'location' => 'required',
                     'price' => 'required',
-                    'description' => 'required'
+                    'description' => 'required',
+                    'termin' => 'required',
+                    'nominal' => 'required',
+                    'keterangan' => 'required'
                 ];
             }
             case 'PUT':
@@ -36,7 +39,10 @@ class ProjectPackageRequest extends FormRequest
                     'type' => 'required',
                     'location' => 'required',
                     'price' => 'required',
-                    'description' => 'required'
+                    'description' => 'required',
+                    'termin' => 'required',
+                    'nominal' => 'required',
+                    'keterangan' => 'required'
                 ];
             }
         }

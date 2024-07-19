@@ -27,8 +27,8 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Layanan</th>
                                         <th>Type</th>
+                                        <th>Layanan</th>
                                         <th>Harga</th>
                                         <th>Action</th>
                                     </tr>

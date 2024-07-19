@@ -23,27 +23,45 @@
                         <form method="post" action="{{ route('admin.project_packages.store') }}">
                             @csrf 
                             <div class="form-group row border-bottom pb-4">
-                                <label for="type" class="col-sm-2 col-form-label">Layanan</label>
+                                <label for="type" class="col-sm-2 col-form-label">Type</label>
                                 <div class="col-sm-10">
-                                <input type="text" class="form-control" name="type" value="{{ old('type') }}" id="type" placeholder="contoh: Bangun baru">
+                                <input type="text" class="form-control" name="type" value="{{ old('type') }}" id="type">
                                 </div>
                             </div>
                             <div class="form-group row border-bottom pb-4">
-                                <label for="Location" class="col-sm-2 col-form-label">Type</label>
+                                <label for="Location" class="col-sm-2 col-form-label">Layanan</label>
                                 <div class="col-sm-10">
-                                <input text="text" class="form-control" id="Location" name="location" value="{{ old('location') }}" placeholder="contoh: Scandinavian">
+                                <input text="text" class="form-control" id="Location" name="location" value="{{ old('location') }}">
                                 </div>
                             </div>
                             <div class="form-group row border-bottom pb-4">
                                 <label for="price" class="col-sm-2 col-form-label">Price</label>
                                 <div class="col-sm-10">
-                                <input text="number" class="form-control" id="price" name="price" value="{{ old('price') }}" placeholder="contoh: 999">
+                                <input text="number" class="form-control" id="price" name="price" value="{{ old('price') }}">
                                 </div>
                             </div>
                             <div class="form-group row border-bottom pb-4">
                                 <label for="description" class="col-sm-2 col-form-label">Deskripsi</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" name="description" name="type" id="description" cols="30" rows="7" placeholder="Masukan deskripsi disini">{{ old('description') }}</textarea>
+                                    <textarea class="form-control" name="description" name="type" id="description" cols="30" rows="7" >{{ old('description') }}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row border-bottom pb-4">
+                                <label for="Location" class="col-sm-2 col-form-label">Termin</label>
+                                <div class="col-sm-10">
+                                <input text="text" class="form-control" id="Termin" name="termin" value="{{ old('termin') }}">
+                                </div>
+                            </div>
+                            <div class="form-group row border-bottom pb-4">
+                                <label for="price" class="col-sm-2 col-form-label">Nominal</label>
+                                <div class="col-sm-10">
+                                <input text="number" class="form-control" id="nominal" name="nominal" value="{{ old('nominal') }}">
+                                </div>
+                            </div>
+                            <div class="form-group row border-bottom pb-4">
+                                <label for="Location" class="col-sm-2 col-form-label">Keterangan</label>
+                                <div class="col-sm-10">
+                                <input text="text" class="form-control" id="keterangan" name="keterangan" value="{{ old('keterangan') }}">
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-success">Save</button>

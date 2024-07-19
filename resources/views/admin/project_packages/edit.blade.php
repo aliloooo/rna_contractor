@@ -26,24 +26,33 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Lokasi</th>
+                                        <th>Progress</th>
                                         <th>Foto</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @forelse($project_package->galleries as $gallery)
+                                    @forelse($project_package->galleries as $gallery)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $gallery->name }}</td>
                                         <td>
-                                            <a href="{{ Storage::url($gallery->images) }}" target="_blank">
-                                                <img width="100" src="{{ Storage::url($gallery->images) }}" alt="{{ $gallery->name }}">
-                                            </a>
+                                            @if (in_array(pathinfo($gallery->media_path, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif']))
+                                                <a href="{{ Storage::url($gallery->media_path) }}" target="_blank">
+                                                    <img width="100" src="{{ Storage::url($gallery->media_path) }}" alt="{{ $gallery->name }}">
+                                                </a>
+                                            @elseif (in_array(pathinfo($gallery->media_path, PATHINFO_EXTENSION), ['mp4', 'mov', 'avi']))
+                                                <video width="100" controls>
+                                                    <source src="{{ Storage::url($gallery->media_path) }}" type="video/{{ pathinfo($gallery->media_path, PATHINFO_EXTENSION) }}">
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            @else
+                                                <a href="{{ Storage::url($gallery->media_path) }}" target="_blank">View Media</a>
+                                            @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.project_packages.galleries.edit', [$project_package,$gallery]) }}" class="btn btn-sm btn-info"> <i class="fa fa-edit"></i> </a>              
-                                            <form onclick="return confirm('are you sure ?');" class="d-inline-block" action="{{ route('admin.project_packages.galleries.destroy', [$project_package,$gallery]) }}" method="post">
+                                            <a href="{{ route('admin.project_packages.galleries.edit', [$project_package, $gallery]) }}" class="btn btn-sm btn-info"> <i class="fa fa-edit"></i> </a>              
+                                            <form onclick="return confirm('Are you sure?');" class="d-inline-block" action="{{ route('admin.project_packages.galleries.destroy', [$project_package, $gallery]) }}" method="post">
                                                 @csrf 
                                                 @method('delete')
                                                 <button class="btn btn-sm btn-danger"> <i class="fa fa-trash"></i> </button>
@@ -52,9 +61,9 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td class="text-center" colspan="4">Tidak Ada Foto</td>
+                                        <td class="text-center" colspan="4">No Media</td>
                                     </tr>
-                                @endforelse
+                                @endforelse                                
                                 </tbody>
                             </table>
                         </div>
@@ -65,19 +74,18 @@
                         <form method="post" action="{{ route('admin.project_packages.galleries.store', [$project_package]) }}" enctype="multipart/form-data">
                             @csrf 
                             <div class="form-group row border-bottom pb-4">
-                                <label for="name" class="col-sm-2 col-form-label">Lokasi</label>
+                                <label for="name" class="col-sm-2 col-form-label">Progress</label>
                                 <div class="col-sm-10">
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}" id="name" placeholder="contoh: Jakarta Barat">
+                                <input type="text" class="form-control" name="name" value="{{ old('name') }}" id="name" placeholder="">
                                 </div>
                             </div>
                            
                             <div class="form-group row border-bottom pb-4">
-                                <label for="images" class="col-sm-2 col-form-label">Foto</label>
+                                <label for="media" class="col-sm-2 col-form-label">Media</label>
                                 <div class="col-sm-10">
-                                <input type="file" class="form-control" name="images" value="{{ old('images') }}" id="images">
+                                    <input type="file" class="form-control" name="media" value="{{ old('media') }}" id="media" accept="image/*,video/*">
                                 </div>
                             </div>
-                           
                             <button type="submit" class="btn btn-success">Save</button>
                         </form>
                     </div>
@@ -87,19 +95,19 @@
                             @csrf 
                             @method('put')
                             <div class="form-group row border-bottom pb-4">
-                                <label for="type" class="col-sm-2 col-form-label">Layanan</label>
+                                <label for="type" class="col-sm-2 col-form-label">Type</label>
                                 <div class="col-sm-10">
                                 <input type="text" class="form-control" name="type" value="{{ old('type', $project_package->type) }}" id="type" placeholder="example: 4D5N">
                                 </div>
                             </div>
                             <div class="form-group row border-bottom pb-4">
-                                <label for="Location" class="col-sm-2 col-form-label">Type</label>
+                                <label for="Location" class="col-sm-2 col-form-label">Layanan</label>
                                 <div class="col-sm-10">
-                                <input text="text" class="form-control" id="Location" name="location" value="{{ old('location', $project_package->location) }}" placeholder="example: Bali, Indonesia">
+                                <input text="text" class="form-control" id="Location" name="location" value="{{ old('location', $project_package->location) }}" placeholder="contoh: SCANDINAVIAN">
                                 </div>
                             </div>
                             <div class="form-group row border-bottom pb-4">
-                                <label for="price" class="col-sm-2 col-form-label">Price</label>
+                                <label for="price" class="col-sm-2 col-form-label">Harga</label>
                                 <div class="col-sm-10">
                                 <input text="number" class="form-control" id="price" name="price" value="{{ old('price', $project_package->price) }}" placeholder="example: 300">
                                 </div>
@@ -108,6 +116,24 @@
                                 <label for="description" class="col-sm-2 col-form-label">Description</label>
                                 <div class="col-sm-10">
                                     <textarea class="form-control" name="description" name="type" id="description" cols="30" rows="7" placeholder="Description text...">{{ old('description', $project_package->description) }}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row border-bottom pb-4">
+                                <label for="Location" class="col-sm-2 col-form-label">Termin</label>
+                                <div class="col-sm-10">
+                                <input text="text" class="form-control" id="Termin" name="termin" value="{{ old('termin', $project_package->termin) }}" placeholder="contoh: 3x">
+                                </div>
+                            </div>
+                            <div class="form-group row border-bottom pb-4">
+                                <label for="price" class="col-sm-2 col-form-label">Nominal</label>
+                                <div class="col-sm-10">
+                                <input text="number" class="form-control" id="nominal" name="nominal" value="{{ old('nominal', $project_package->nominal) }}" placeholder="contoh: 777">
+                                </div>
+                            </div>
+                            <div class="form-group row border-bottom pb-4">
+                                <label for="Location" class="col-sm-2 col-form-label">Keterangan</label>
+                                <div class="col-sm-10">
+                                <input text="text" class="form-control" id="keterangan" name="keterangan" value="{{ old('keterangan', $project_package->keterangan) }}" placeholder="contoh: Transfer via bank">
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-success">Save</button>

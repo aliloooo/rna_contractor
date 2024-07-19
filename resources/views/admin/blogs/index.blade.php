@@ -27,10 +27,10 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Title</th>
-                                        <th>Image</th>
-                                        <th>Excerpt</th>
-                                        <th>Category</th>
+                                        <th>Judul</th>
+                                        <th>Foto</th>
+                                        <th>Kutipan</th>
+                                        <th>Kategori</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>

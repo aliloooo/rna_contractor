@@ -8,7 +8,7 @@
             <!--========== ISLANDS 1 ==========-->
             <section class="islands swiper-slide">
               <img
-                src="{{ asset('frontend/assets/img/contact-hero.jpg') }}"
+                src="{{ asset('frontend/assets/img/9.jpg') }}"
                 alt=""
                 class="islands__bg"
               />

@@ -8,18 +8,15 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::paginate();
-
+        $users = User::all();
         return view('users.index', compact('users'));
     }
 
-    public function destroy(User $users)
+    public function destroy($id)
     {
-        $users->delete();
+        $user = User::findOrFail($id);
+        $user->delete();
 
-        return redirect()->back()->with([
-            'message' => 'success deleted !',
-            'alert-type' => 'danger'
-        ]);
+        return redirect()->route('admin.users.index')->with('success', 'User deleted successfully.');
     }
 }

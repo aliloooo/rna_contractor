@@ -28,8 +28,8 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Type</th>
-                                        <th>Location</th>
-                                        <th>Price</th>
+                                        <th>Progress</th>
+                                        <th>Harga</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>

@@ -3,25 +3,27 @@
 @section('content')
 <!--==================== HOME ====================-->
 <section>
-        <div class="swiper-container gallery-top">
-          <div class="swiper-wrapper">
-            <section class="islands swiper-slide">
-              <img
-                src="{{ asset('frontend/assets/img/blog-hero.jpg') }}"
-                alt=""
-                class="islands__bg"
-              />
-
-              <div class="islands__container container">
-                <div class="islands__data">
-                  <h2 class="islands__subtitle">Our</h2>
-                  <h1 class="islands__title">Blog</h1>
-                </div>
-              </div>
-            </section>
+  <div class="swiper-container gallery-top">
+    <div class="swiper-wrapper">
+      <!--========== ISLANDS 1 ==========-->
+      <section class="islands swiper-slide">
+        <img
+          src="{{ asset('frontend/assets/img/3.jpg') }}"
+          alt=""
+          class="islands__bg"
+        />
+        <div class="bg__overlay">
+          <div class="islands__container container">
+            <div class="islands__data">
+              <h2 class="islands__subtitle">Our</h2>
+              <h1 class="islands__title">Blog</h1>
+            </div>
           </div>
         </div>
       </section>
+    </div>
+  </div>
+</section>
 
       <!-- blog -->
       <section class="blog section" id="blog">

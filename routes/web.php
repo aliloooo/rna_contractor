@@ -16,11 +16,10 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes(['register' => true]);
 
+
 Route::group(['middleware' => ['is_admin','auth'], 'prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
-    // booking
-    Route::resource('bookings', \App\Http\Controllers\Admin\BookingController::class)->only(['index', 'destroy']);
     // reservation
     Route::resource('reservation', \App\Http\Controllers\Admin\ReservationController::class)->only(['index', 'destroy']);
     // project packages
@@ -31,13 +30,14 @@ Route::group(['middleware' => ['is_admin','auth'], 'prefix' => 'admin', 'as' => 
     // blogs
     Route::resource('blogs', \App\Http\Controllers\Admin\BlogController::class)->except('show');
     // profile
-    // Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
     Route::resource('users', \App\Http\Controllers\UserController::class)->only(['index', 'destroy']);
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+
 });
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('homepage');
+
 // project packages
 Route::get('project-packages',[\App\Http\Controllers\ProjectPackageController::class, 'index'])->name('project_package.index');
 Route::get('project-packages/{project_package:slug}',[\App\Http\Controllers\ProjectPackageController::class, 'show'])->name('project_package.show');
@@ -49,8 +49,7 @@ Route::get('blogs/category/{category:slug}', [\App\Http\Controllers\BlogControll
 Route::get('contact', function() {
     return view('contact');
 })->name('contact');
-// booking
-Route::post('booking', [App\Http\Controllers\BookingController::class, 'store'])->name('booking.store');
+
 // reservation
 Route::get('reservation',[\App\Http\Controllers\ReservationController::class, 'index'])->name('reservation');
 Route::post('reservation', [App\Http\Controllers\ReservationController::class, 'store'])->name('reservation.store');

@@ -1,4 +1,4 @@
-@vite(['resources/sass/app.scss','resources/js/app.js'])
+@vite (['resources/sass/app.scss','resources/js/app.js'])
 <!-- Sidebar -->
 <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
@@ -30,18 +30,10 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.bookings.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-book"></i>
-                    <p>
-                        {{ __('Booking') }}
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a href="{{ route('admin.reservation.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-book"></i>
                     <p>
-                        {{ __('Reservation') }}
+                        {{ __('Reservasi') }}
                     </p>
                 </a>
             </li>

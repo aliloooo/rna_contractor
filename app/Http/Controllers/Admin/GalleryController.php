@@ -16,15 +16,18 @@ class GalleryController extends Controller
      */
     public function store(GalleryRequest $request, ProjectPackage $project_package)
     {
-        if($request->validated()){
-            $images = $request->file('images')->store(
+        if ($request->validated()) {
+            $media = $request->file('media')->store(
                 'project_package/gallery', 'public'
             );
-            Gallery::create($request->except('images') + ['images' => $images,'project_package_id' => $project_package->id]);
+            Gallery::create($request->except('media') + [
+                'media_path' => $media,
+                'project_package_id' => $project_package->id
+            ]);
         }
 
         return redirect()->route('admin.project_packages.edit', [$project_package])->with([
-            'message' => 'Success Created !',
+            'message' => 'Success Created!',
             'alert-type' => 'success'
         ]);
     }
@@ -42,20 +45,23 @@ class GalleryController extends Controller
      */
     public function update(GalleryRequest $request,ProjectPackage $project_package, Gallery $gallery)
     {
-        if($request->validated()) {
-            if($request->images) {
-                File::delete('storage/'. $gallery->images);
-                $images = $request->file('images')->store(
+        if ($request->validated()) {
+            if ($request->hasFile('media')) {
+                File::delete('storage/' . $gallery->media_path);
+                $media = $request->file('media')->store(
                     'project_package/gallery', 'public'
                 );
-                $gallery->update($request->except('images') + ['images' => $images, 'project_package_id' => $project_package->id]);
-            }else {
+                $gallery->update($request->except('media') + [
+                    'media_path' => $media,
+                    'project_package_id' => $project_package->id
+                ]);
+            } else {
                 $gallery->update($request->validated());
             }
         }
 
         return redirect()->route('admin.project_packages.edit', [$project_package])->with([
-            'message' => 'Success Updated !',
+            'message' => 'Success Updated!',
             'alert-type' => 'info'
         ]);
     }

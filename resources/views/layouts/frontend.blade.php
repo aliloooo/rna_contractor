@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}" />
     @stack('style-alt')
     <title>RNA CONTRACTOR</title>
+    <link rel="icon" href="{{ asset('frontend/assets/img/logodoang.png') }}" type="image/x-icon">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
@@ -22,13 +23,15 @@
     <!--==================== HEADER ====================-->
     <header class="header" id="header">
         <nav class="nav container d-flex justify-content-between align-items-center">
-            <a href="{{ route('homepage') }}" class="nav__logo text-decoration-none d-flex align-items-center">
-                RNA <img src="{{ asset('frontend/assets/img/property1.png') }}" style="height: 30px;" alt="RNA Logo">
-                CONTRACTOR
+            <a href="{{ route('homepage') }}" class="nav__logo text-decoration-none d-flex align-items-center my-auto mx-auto">
+                <img src="{{ asset('frontend/assets/img/logorna.png') }}" style="height: 70px;" alt="">
             </a>
     
             <div class="nav__menu px-1">
-                <ul class="nav__list d-flex align-items-center">
+                <ul class="nav__list d-flex align-items-center my-3">
+                    <li class="nav__item">
+                        
+                    </li>
                     <li class="nav__item">
                         <a href="{{ route('homepage') }}"
                             class="nav__link {{ request()->is('/') ? 'active-link' : '' }} text-decoration-none fs-5">
@@ -68,13 +71,13 @@
                     <!-- Admin dropdown -->
                     @auth
                         <li class="nav-item dropdown px-3">
-                            <a class="nav-link dropdown-toggle d-flex align-items-center fs-5" href="#"
-                                id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                <i class="bx bx-user"></i>
-                                {{-- <span>{{ Auth::user()->name }}</span> --}}
-                                {{-- <i class="bx bx-chevron-down ml-2"></i> --}}
-                            </a>
+                            <a class="nav-link dropdown-toggle d-flex align-items-center fs-5 text-black" href="#"
+                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i class="bx bx-user text-black"></i>
+                            {{-- <span>{{ Auth::user()->name }}</span> --}}
+                            {{-- <i class="bx bx-chevron-down ml-2"></i> --}}
+                        </a>                        
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 @if (Auth::user()->is_admin == '1')
                                     <a class="dropdown-item d-flex align-items-center fs-5"
@@ -123,6 +126,7 @@
         </nav>
     </header>
     
+    
 
     <!--==================== MAIN ====================-->
     <main class="main">
@@ -132,12 +136,12 @@
     <!--==================== FOOTER ====================-->
     <footer class="footer section">
         <div class="footer__container container grid">
-            <div>
-                <a href="{{ route('homepage') }}" class="nav__logo text-decoration-none">
-                    RNA <img src="{{ asset('frontend/assets/img/property1.png') }}"
-                        style="height: 30px; margin-bottom: 5px;" alt="RNA Logo"> CONTRACTOR
+            <div class="mx-5">
+                <a href="{{ route('homepage') }}" class="nav__logo text-decoration-none mx-4">
+                <img src="{{ asset('frontend/assets/img/logorna.png') }}"
+                        style="height: 70px;" alt="RNA Logo">
                 </a>
-                <p class="footer__description">
+                <p class="footer__description mx-5">
                     Our vision is to help people find the <br />
                     best places to project with high security
                 </p>
@@ -146,7 +150,7 @@
             <div class="footer__content">
                 <div>
                     <h3 class="footer__title">About</h3>
-                    <ul class="footer__links">
+                    <ul class="footer__links list-unstyled">
                         <li>
                             <a href="#" class="footer__link text-decoration-none">About Us</a>
                         </li>
@@ -160,7 +164,7 @@
                 </div>
                 <div>
                     <h3 class="footer__title">Company</h3>
-                    <ul class="footer__links">
+                    <ul class="footer__links list-unstyled">
                         <li>
                             <a href="#" class="footer__link text-decoration-none">How We Work?</a>
                         </li>
@@ -174,7 +178,7 @@
                 </div>
                 <div>
                     <h3 class="footer__title">Support</h3>
-                    <ul class="footer__links">
+                    <ul class="footer__links list-unstyled">
                         <li>
                             <a href="#" class="footer__link text-decoration-none">FAQs</a>
                         </li>
@@ -188,7 +192,7 @@
                 </div>
                 <div>
                     <h3 class="footer__title">Follow Us</h3>
-                    <ul class="footer__social">
+                    <ul class="footer__social list-unstyled">
                         <li>
                             <a href="#" class="footer__social-link">
                                 <i class="bx bxl-facebook-circle"></i>

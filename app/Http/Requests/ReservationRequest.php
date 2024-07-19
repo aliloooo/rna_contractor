@@ -6,30 +6,20 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ReservationRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
-        return true;
+        return true; // Ubah menjadi true jika Anda ingin mengizinkan akses
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
         return [
-            'nama' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'no_telepon' => 'required|numeric',
-            'layanan' => 'required|string',
-            'tanggal' => 'required|date',
-            'deskripsi' => 'nullable|string',
+            'nama' => ['required', 'string', 'regex:/^[a-zA-Z\s]*$/'], // Nama hanya boleh huruf dan spasi
+            'email' => ['required', 'email'],
+            'no_telepon' => ['required', 'string', 'max:13'], // No telepon maksimal 13 karakter
+            'layanan' => ['required', 'string'],
+            'tanggal' => ['required', 'date'],
+            'deskripsi' => ['required', 'string'],
         ];
     }
 }

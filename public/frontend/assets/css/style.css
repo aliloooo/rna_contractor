@@ -93,7 +93,7 @@ button {
 .section__subtitle {
   display: block;
   font-size: 0.813rem;
-  color: var(--second-color);
+  color: #390050;
 }
 
 .main {
@@ -385,7 +385,7 @@ button {
 }
 
 .popular__price span {
-  color: var(--second-color);
+  color: #390050;
 }
 
 .popular__title {

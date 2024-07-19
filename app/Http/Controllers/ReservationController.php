@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ReservationRequest;
-use App\Models\Reservation;
 use Illuminate\Http\Request;
+use App\Models\Reservation;
+use App\Http\Requests\ReservationRequest; // Import Form Request
 
 class ReservationController extends Controller
 {
-    /**
+        /**
      * Display a listing of the reservations.
      *
      * @return \Illuminate\Http\Response
@@ -24,8 +24,22 @@ class ReservationController extends Controller
 
     public function store(ReservationRequest $request)
     {
-        $reservation = Reservation::create($request->validated());
+        try {
+            // Simpan data ke dalam database
+            $reservation = new Reservation();
+            $reservation->nama = $request->nama;
+            $reservation->email = $request->email;
+            $reservation->no_telepon = $request->no_telepon;
+            $reservation->layanan = $request->layanan;
+            $reservation->tanggal = $request->tanggal;
+            $reservation->deskripsi = $request->deskripsi;
+            $reservation->save();
 
-        return redirect()->back()->with('success', 'Reservation created successfully!');
+            // Redirect dengan pesan sukses
+            return redirect()->back()->with('success', 'Berhasil.');
+        } catch (\Exception $e) {
+            // Redirect dengan pesan error
+            return redirect()->back()->with('error', 'Gagal.');
+        }
     }
 }

@@ -24,15 +24,15 @@ class GalleryRequest extends FormRequest
         switch($this->method()) {
             case 'POST' : {
                 return [
-                    'name' => 'required',
-                    'images' => ['required','image', 'mimes:png,jpg,jpeg'],
+                    'name' => 'required|string|max:255',
+                    'media' => ['required', 'file', 'mimes:jpg,jpeg,png,gif,mp4,mov,avi'], 
                 ];
             }
             case 'PUT':
             case 'PATCH': {
                 return [
-                    'name' => 'required',
-                    'images' => ['image', 'mimes:png,jpg,jpeg'],
+                    'name' => 'required|string|max:255',
+                    'media' => ['nullable', 'file', 'mimes:jpg,jpeg,png,gif,mp4,mov,avi'],
                 ];
             }
         }

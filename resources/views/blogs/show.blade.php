@@ -38,26 +38,26 @@
               <ul>
                 @foreach($categories as $category)
                     <li>
-                      <a href="{{ route('blog.category', $category->slug) }}">{{ $category->name }}</a>
+                      <a class="text-decoration-none" href="{{ route('blog.category', $category->slug) }}">{{ $category->name }}</a>
                     </li>
                 @endforeach
               </ul>
               <h3 style="margin-bottom: 1rem">Popular Project</h3>
               @foreach($project_packages as $project_package)
-                <article class="popular__card" style="margin-bottom: 1rem">
-                  <a href="{{ route('project_package.show', $project_package->slug) }}">
-                    <img
-                      src="{{ Storage::url($project_package->galleries->first()->images) }}"
-                      alt=""
-                      class="popular__img"
-                    />
-                    <div class="popular__data">
-                      <h2 class="popular__price"><span>Rp. </span>{{ number_format($project_package->price,2) }}</h2>
-                      <h3 class="popular__title">{{ $project_package->location }}</h3>
-                      <p class="popular__description">{{ $project_package->type }}</p>
-                    </div>
-                  </a>
-                </article>
+              <article class="popular__card " style="margin-bottom: 1rem">
+                <a href="{{ route('project_package.show', $project_package->slug) }}" class="text-decoration-none">
+                  <img
+                    src="{{ Storage::url($project_package->galleries->first()->images) }}"
+                    alt=""
+                    class="popular__img"
+                  />
+                  <div class="popular__data">
+                    <h2 class="popular__price"><span>Rp. </span>{{ number_format($project_package->price,2) }}</h2>
+                    <h3 class="popular__title">{{ $project_package->location }}</h3>
+                    <p class="popular__description">{{ $project_package->type }}</p>
+                  </div>
+                </a>
+              </article>              
               @endforeach
             </div>
           </div>

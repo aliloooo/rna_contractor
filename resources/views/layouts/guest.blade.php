@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'Login') }}</title>
+    <title>RNA CONTRACTOR</title>
+    <link rel="icon" href="{{ asset('frontend/assets/img/logodoang.png') }}" type="image/x-icon">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -18,7 +19,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="/">{{ config('app.name', 'Login') }}</a>
+        <a href="/">RNA CONTRACTOR</a>
     </div>
     <!-- /.login-logo -->
     <div class="card">
